@@ -1,6 +1,6 @@
 nginx:
   image:
-    repository: your_domain.com/application/nginx
+    repository: kimbi.hackster.me/application/nginx
     tag: {myLatestTag}
 python:
   image:
@@ -12,7 +12,7 @@ python:
     - name: DB_HOST
       value: "postgresql.default.svc.cluster.local" 
     - name: DB_NAME
-      value: dbname
+      value: db
     - name: DB_USER
       value: postgres
     - name: DB_PASSWORD
