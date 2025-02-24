@@ -1,0 +1,20 @@
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: HelmRepository
+metadata:
+  name: buttons
+  namespace: flux-system
+spec:
+  interval: 1m0s
+  url: oci://<myUrl.com>/application
+  type: "oci"
+  secretRef:
+    name: oci-creds
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: oci-creds
+  namespace: flux-system
+stringData:
+  username: admin
+  password: prodigy
