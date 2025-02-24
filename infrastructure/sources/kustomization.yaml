@@ -3,7 +3,3 @@ kind: Kustomization
 namespace: flux-system
 resources:
   - jetstack.yaml
-  - ingress-nginx.yaml
-  - harbor.yaml
-  - buttons.yaml
-  - bitnami.yaml
