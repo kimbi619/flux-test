@@ -1,0 +1,41 @@
+nginx:
+  image:
+    repository: your_domain.com/application/nginx
+    tag: {myLatestTag}
+python:
+  image:
+    repository: ross-docker.whatever.beer/application/python
+    tag: {myLatestTag}
+  name: nginx
+  name: python
+  envs:
+    - name: DB_HOST
+      value: "postgresql.default.svc.cluster.local" 
+    - name: DB_NAME
+      value: dbname
+    - name: DB_USER
+      value: postgres
+    - name: DB_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          name: postgresql
+          key: postgres-password
+
+ingress:
+  enabled: true
+  className: "nginx"
+  annotations: 
+     nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+     cert-manager.io/cluster-issuer: letsencrypt-prod
+  hosts:
+    - host: chart-example.local
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+          service:
+            name: "nginx"
+            port: 80
+  tls: 
+   - secretName: chart-example-tls
+     hosts:
+       - chart-example.local

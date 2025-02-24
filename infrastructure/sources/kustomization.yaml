@@ -5,3 +5,5 @@ resources:
   - jetstack.yaml
   - ingress-nginx.yaml
   - harbor.yaml
+  - buttons.yaml
+  - bitnami.yaml
