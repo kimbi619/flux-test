@@ -3,6 +3,7 @@ kind: Kustomization
 namespace: cert
 resources:
   - release.yaml
+  - namespace.yaml
   # - issuer.yaml 
 configMapGenerator:
   - name: values
