@@ -4,10 +4,3 @@ namespace: cert-manager
 resources:
   - namespace.yaml
   - release.yaml
-# - issuer.yaml 
-configMapGenerator:
-  - name: values
-    files:
-      - values.yaml=values.yaml
-configurations:
-  - kustomizeconfig.yaml
