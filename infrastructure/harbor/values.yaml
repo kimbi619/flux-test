@@ -4,7 +4,6 @@ ingress:
   core:
     ingressClassName: "nginx"
     pathType: ImplementationSpecific
-    controller: default
     hostname: kimbiharbor.hackster.me
     annotations:
       ingress.kubernetes.io/ssl-redirect: "true"

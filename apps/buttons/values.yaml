@@ -1,6 +1,6 @@
 nginx:
   image:
-    repository: kimbi.hackster.me/application/nginx
+    repository: kimbiharbor.hackster.me/application/nginx
     tag: {myLatestTag}
   name: nginx
 python:
@@ -28,7 +28,7 @@ ingress:
      nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
      cert-manager.io/cluster-issuer: letsencrypt-prod
   hosts:
-    - host: chart-example.local
+    - host: kimbi.hackster.me
       paths:
         - path: /
           pathType: ImplementationSpecific
@@ -38,4 +38,4 @@ ingress:
   tls: 
    - secretName: chart-example-tls
      hosts:
-       - chart-example.local
+       - kimbi.hackster.me
