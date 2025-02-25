@@ -6,7 +6,8 @@ resources:
   - release.yaml
 configMapGenerator:
   - name: values
+    namespace: harbor
     files:
-      - values.yaml=values.yaml
+      - values.yaml
 configurations:
   - kustomizeconfig.yaml
