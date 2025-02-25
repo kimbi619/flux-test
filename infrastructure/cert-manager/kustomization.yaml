@@ -8,6 +8,6 @@ resources:
 configMapGenerator:
   - name: values
     files:
-      - values=values.yaml
+      - values.yaml=values.yaml
 configurations:
   - kustomizeconfig.yaml
