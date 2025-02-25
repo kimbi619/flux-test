@@ -2,11 +2,11 @@ nginx:
   image:
     repository: kimbi.hackster.me/application/nginx
     tag: {myLatestTag}
+  name: nginx
 python:
   image:
     repository: ross-docker.whatever.beer/application/python
     tag: {myLatestTag}
-  name: nginx
   name: python
   envs:
     - name: DB_HOST

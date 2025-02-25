@@ -4,3 +4,12 @@ kind: Kustomization
 resources:
   - namespace.yaml
   - postgres.yaml
+  - release.yaml
+
+configMapGenerator:
+  - name: values
+    files:
+      - values.yaml
+
+configurations:
+  - kustomizeconfig.yaml
