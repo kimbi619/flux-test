@@ -5,7 +5,7 @@ nginx:
   name: nginx
 python:
   image:
-    repository: ross-docker.whatever.beer/application/python
+    repository: kimbiharbor.hackster.me/application/buttons
     tag: {myLatestTag}
   name: python
   envs:
@@ -28,13 +28,19 @@ ingress:
      nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
      cert-manager.io/cluster-issuer: letsencrypt-prod
   hosts:
-    - host: kimbiharbor.hackster.me
+    - host: kimbi.hackster.me
       paths:
         - path: /
           pathType: ImplementationSpecific
           service:
             name: "nginx"
             port: 80
+      paths:
+        - path: /api
+          pathType: ImplementationSpecific
+          service:
+            name: "backend"
+            port: 5000
   tls: 
    - secretName: chart-example-tls
      hosts:
