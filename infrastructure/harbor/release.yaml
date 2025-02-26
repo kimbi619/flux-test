@@ -1,12 +1,3 @@
-apiVersion: source.toolkit.fluxcd.io/v1beta1
-kind: HelmRepository
-metadata:
-  name: harbor
-  namespace: flux-system
-spec:
-  interval: 24h
-  url: https://helm.goharbor.io/
----
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
@@ -22,9 +13,9 @@ spec:
         kind: HelmRepository
         name: harbor
         namespace: flux-system
-  valuesFrom:
-    - kind: ConfigMap
-      name: values
+  # valuesFrom:
+  #   - kind: ConfigMap
+  #     name: values
   values:
     expose:
       type: ingress

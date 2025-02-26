@@ -3,6 +3,7 @@ kind: Kustomization
 namespace: harbor
 resources:
   - namespace.yaml
+  - repository.yaml
   - release.yaml
 
 configurations:
