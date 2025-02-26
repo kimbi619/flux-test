@@ -1,13 +1,15 @@
 externalURL: https://kimbiharbor.hackster.me
 exposureType: ingress
 ingress:
-  hosts:
-    core: kimbiharbor.hackster.me
-  controller: default
-  className: nginx
-  annotations:
-    kubernetes.io/ingress.class: nginx
-    cert-manager.io/cluster-issuer: "letsencrypt-prod"
-    ingress.kubernetes.io/ssl-redirect: "true"
-  tls:
-    enabled: true
+  core:
+    ingressClassName: "nginx"
+    pathType: ImplementationSpecific
+    controller: default
+    hostname: kimbiharbor.hackster.me
+    annotations:
+      ingress.kubernetes.io/ssl-redirect: "true"
+      ingress.kubernetes.io/proxy-body-size: "0"
+      nginx.ingress.kubernetes.io/ssl-redirect: "true"
+      nginx.ingress.kubernetes.io/proxy-body-size: "0"
+      cert-manager.io/cluster-issuer: "letsencrypt-prod"
+    tls: true
