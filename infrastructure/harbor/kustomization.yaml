@@ -4,10 +4,6 @@ namespace: harbor
 resources:
   - namespace.yaml
   - release.yaml
-configMapGenerator:
-  - name: values
-    namespace: harbor
-    files:
-      - values.yaml
+
 configurations:
   - kustomizeconfig.yaml
