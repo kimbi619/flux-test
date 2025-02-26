@@ -25,5 +25,4 @@ spec:
   valuesFrom:
     - kind: ConfigMap
       name: values
-      namespace: harbor
   values:
