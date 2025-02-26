@@ -13,22 +13,6 @@ spec:
         kind: HelmRepository
         name: harbor
         namespace: flux-system
-  # valuesFrom:
-  #   - kind: ConfigMap
-  #     name: values
-  values:
-    expose:
-      type: ingress
-      tls:
-        enabled: true
-      ingress:
-        hosts:
-          core: kimbiharbor.hackster.me
-          notary: notary.kimbiharbor.hackster.me
-        controller: default
-        annotations:
-          kubernetes.io/ingress.class: nginx
-          cert-manager.io/cluster-issuer: "letsencrypt-prod"
-          ingress.kubernetes.io/ssl-redirect: "true"
-    
-    externalURL: https://kimbiharbor.hackster.me
+  valuesFrom:
+    - kind: ConfigMap
+      name: values
