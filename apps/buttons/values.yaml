@@ -26,6 +26,7 @@ ingress:
   className: "nginx"
   annotations: 
      nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+     cert-manager.io/cluster-issuer: letsencrypt-prod
   hosts:
     - host: kimbi.hackster.me
       paths:
@@ -34,4 +35,7 @@ ingress:
           service:
             name: "nginx"
             port: 80
-  
+  tls: 
+   - secretName: chart-example-tls
+     hosts:
+       - kimbi.hackster.me
