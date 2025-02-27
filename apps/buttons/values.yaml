@@ -10,7 +10,7 @@ nginx:
 python:
   image:
     repository: kimbiharbor.hackster.me/application/buttons
-    tag: "${myLatestTag}"
+    tag: "0.1.2"
   name: python
   envs:
     - name: DB_HOST
@@ -37,12 +37,12 @@ ingress:
         - path: /
           pathType: ImplementationSpecific
           service:
-            name: "buttons-nginx"
+            name: "nginx"
             port: 80
         - path: /api
           pathType: ImplementationSpecific
           service:
-            name: "buttons-python"
+            name: "python"
             port: 80
       
   tls: 
