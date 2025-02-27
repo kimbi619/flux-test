@@ -37,12 +37,12 @@ ingress:
         - path: /
           pathType: ImplementationSpecific
           service:
-            name: "nginx"
+            name: "buttons-nginx"
             port: 80
         - path: /api
           pathType: ImplementationSpecific
           service:
-            name: "python"
+            name: "buttons-python"
             port: 80
       
   tls: 
