@@ -4,7 +4,7 @@ imagePullSecrets:
 nginx:
   image:
     repository: kimbiharbor.hackster.me/application/nginx
-    tag: "${myLatestTag}"
+    tag: "main-c2d24b8-1740567239"
   name: nginx
 
 python:
