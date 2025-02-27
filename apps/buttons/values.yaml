@@ -5,7 +5,7 @@ nginx:
   name: nginx
 python:
   image:
-    repository: kimbiharbor.hackster.me/application/buttons
+    repository: kimbiharbor.hackster.me/application/nginx
     tag: {myLatestTag}
   name: python
   envs:
@@ -35,12 +35,7 @@ ingress:
           service:
             name: "nginx"
             port: 80
-      paths:
-        - path: /api
-          pathType: ImplementationSpecific
-          service:
-            name: "backend"
-            port: 5000
+      
   tls: 
    - secretName: chart-example-tls
      hosts:
