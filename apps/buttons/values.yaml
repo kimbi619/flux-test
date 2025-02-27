@@ -1,3 +1,6 @@
+imagePullSecrets:
+  - name: your-regcred
+
 nginx:
   image:
     repository: kimbiharbor.hackster.me/application/nginx
