@@ -4,13 +4,13 @@ imagePullSecrets:
 nginx:
   image:
     repository: kimbiharbor.hackster.me/application/nginx
-    tag: {myLatestTag}
+    tag: "latest"
   name: nginx
 
 python:
   image:
     repository: kimbiharbor.hackster.me/application/buttons
-    tag: {myLatestTag}
+    tag: "latest"
   name: python
   envs:
     - name: DB_HOST
@@ -49,3 +49,21 @@ ingress:
    - secretName: chart-example-tls
      hosts:
        - kimbi.hackster.me
+
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: your-regcred
+  namespace: buttons
+type: kubernetes.io/dockerconfigjson
+stringData:
+  .dockerconfigjson: |
+    {
+      "auths": {
+        "kimbiharbor.hackster.me": {
+          "username": "admin",
+          "password": "7HwP2bw9HSf9jmLaaJVsO4"
+        }
+      }
+    }

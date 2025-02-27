@@ -4,7 +4,7 @@ namespace: buttons
 resources:
   - namespace.yaml
   - postgres.yaml
-  - release.yaml
+  - regcred-secret.yaml 
 configMapGenerator:
   - name: values
     files:
