@@ -3,9 +3,10 @@ nginx:
     repository: kimbiharbor.hackster.me/application/nginx
     tag: {myLatestTag}
   name: nginx
+
 python:
   image:
-    repository: kimbiharbor.hackster.me/application/nginx
+    repository: kimbiharbor.hackster.me/application/buttons
     tag: {myLatestTag}
   name: python
   envs:
@@ -34,6 +35,11 @@ ingress:
           pathType: ImplementationSpecific
           service:
             name: "nginx"
+            port: 80
+        - path: /api
+          pathType: ImplementationSpecific
+          service:
+            name: "python"
             port: 80
       
   tls: 
