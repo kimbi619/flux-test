@@ -10,11 +10,11 @@ nginx:
 python:
   image:
     repository: kimbiharbor.hackster.me/application/buttons
-    tag: "0.1.2"
+    tag: "0.1.3"
   name: python
   envs:
     - name: DB_HOST
-      value: "postgresql.default.svc.cluster.local" 
+      value: "postgres-postgresql.buttons.svc.cluster.local"
     - name: DB_NAME
       value: db
     - name: DB_USER
@@ -22,8 +22,10 @@ python:
     - name: DB_PASSWORD
       valueFrom:
         secretKeyRef:
-          name: postgresql
+          name: postgres-postgresql
           key: postgres-password
+  service:
+    port: 5000
 
 ingress:
   enabled: true
@@ -43,7 +45,7 @@ ingress:
           pathType: ImplementationSpecific
           service:
             name: "python"
-            port: 80
+            port: 5000
       
   tls: 
    - secretName: chart-example-tls
