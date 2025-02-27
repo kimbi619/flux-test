@@ -4,11 +4,13 @@ imagePullSecrets:
 nginx:
   image:
     repository: kimbiharbor.hackster.me/application/nginx
+    tag: {myLatestTag}
   name: nginx
 
 python:
   image:
     repository: kimbiharbor.hackster.me/application/buttons
+    tag: {myLatestTag}
   name: python
   envs:
     - name: DB_HOST
