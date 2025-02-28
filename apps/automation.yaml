@@ -2,7 +2,7 @@ apiVersion: image.toolkit.fluxcd.io/v1beta2
 kind: ImageRepository
 metadata:
   name: nginx
-  namespace: flux-system
+  namespace: buttons
 spec:
   image: kimbiharbor.hackster.me/application/nginx
   interval: 1m
