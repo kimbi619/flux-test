@@ -7,25 +7,7 @@ nginx:
     tag: "main-c2d24b8-1740567239"
   name: nginx
 
-python:
-  image:
-    repository: kimbiharbor.hackster.me/application/buttons
-    tag: "0.1.5"
-  name: python
-  envs:
-    - name: DB_HOST
-      value: "postgres-postgresql.buttons.svc.cluster.local"
-    - name: DB_NAME
-      value: db
-    - name: DB_USER
-      value: postgres
-    - name: DB_PASSWORD
-      valueFrom:
-        secretKeyRef:
-          name: postgres-postgresql
-          key: postgres-password
-  service:
-    port: 5000
+
 
 ingress:
   enabled: true
@@ -41,12 +23,6 @@ ingress:
           service:
             name: "nginx"
             port: 80
-        - path: /api
-          pathType: ImplementationSpecific
-          service:
-            name: "python"
-            port: 5000
-      
   tls: 
    - secretName: chart-example-tls
      hosts:
