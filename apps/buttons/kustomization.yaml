@@ -5,7 +5,7 @@ resources:
   - namespace.yaml
   - postgres.yaml
   - regcred-secret.yaml 
-  - release.yaml
+  - service.yaml 
 configMapGenerator:
   - name: values
     files:

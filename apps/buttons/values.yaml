@@ -6,9 +6,7 @@ nginx:
     repository: kimbiharbor.hackster.me/application/nginx
     tag: "main-9e0c963-1740736030"
   name: nginx
-  service:
-    port: 80
-    type: ClusterIP
+  
 
 python:
   image:
@@ -30,17 +28,6 @@ python:
   service:
     port: 5000
 
-
-services:
-  nginx:
-    type: ClusterIP
-    port: 80
-    targetPort: 80
-  python:
-    type: ClusterIP
-    port: 5000
-    targetPort: 5000
-    
 ingress:
   enabled: true
   className: "nginx"
