@@ -2,10 +2,80 @@ apiVersion: image.toolkit.fluxcd.io/v1beta2
 kind: ImageRepository
 metadata:
   name: nginx
-  namespace: buttons
+  namespace: buttons 
 spec:
   image: kimbiharbor.hackster.me/application/nginx
   interval: 1m
   secretRef:
+    name: your-regcred  
+
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImageRepository
+metadata:
+  name: buttons
+  namespace: buttons
+spec:
+  image: kimbiharbor.hackster.me/application/buttons
+  interval: 1m
+  secretRef:
     name: your-regcred
 
+---
+
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImagePolicy
+metadata:
+  name: nginx
+  namespace: buttons
+spec:
+  imageRepositoryRef:
+    name: nginx
+  filterTags:
+    pattern: '^main-[a-fA-F0-9]+-(?P<ts>[0-9]+)'
+    extract: '$ts'
+  policy:
+    numerical:
+      order: asc  
+
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImagePolicy
+metadata:
+  name: buttons
+  namespace: buttons
+spec:
+  imageRepositoryRef:
+    name: buttons
+  filterTags:
+    pattern: '^(?P<semver>([0-9]+)\.([0-9]+)\.([0-9]+))$'
+    extract: '$semver'
+  policy:
+    semver:
+      range: '>=0.0.0' 
+
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImageUpdateAutomation
+metadata:
+  name: buttons
+  namespace: buttons
+spec:
+  git:
+    checkout:
+      ref:
+        branch: main
+    commit:
+      author:
+        email: fluxcdbot@users.noreply.github.com
+        name: fluxcdbot
+      messageTemplate: 'Update images: {{range .Updated.Images}}{{println .}}{{end}}'
+    push:
+      branch: main
+  interval: 1m0s
+  sourceRef:
+    kind: GitRepository
+    name: buttons
+  update:
+    path: ./apps/buttons
+    strategy: Setters
