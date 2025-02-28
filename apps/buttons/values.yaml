@@ -4,7 +4,7 @@ imagePullSecrets:
 nginx:
   image:
     repository: kimbiharbor.hackster.me/application/nginx
-    tag: "main-c2d24b8-1740567239"
+    tag: "main-9e0c963-1740736030"
   name: nginx
   service:
     port: 80
