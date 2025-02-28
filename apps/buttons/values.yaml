@@ -10,7 +10,7 @@ nginx:
 python:
   image:
     repository: kimbiharbor.hackster.me/application/buttons
-    tag: "0.1.4"
+    tag: "0.1.5"
   name: python
   envs:
     - name: DB_HOST
