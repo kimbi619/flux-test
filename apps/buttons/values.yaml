@@ -30,6 +30,17 @@ python:
   service:
     port: 5000
 
+
+services:
+  nginx:
+    type: ClusterIP
+    port: 80
+    targetPort: 80
+  python:
+    type: ClusterIP
+    port: 5000
+    targetPort: 5000
+    
 ingress:
   enabled: true
   className: "nginx"
